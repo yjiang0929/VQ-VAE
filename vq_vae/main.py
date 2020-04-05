@@ -11,17 +11,14 @@ from torch.utils.tensorboard import SummaryWriter
 from torchvision import datasets, transforms
 from torchvision.utils import save_image, make_grid
 
-from vq_vae.util import setup_logging_from_args
-from vq_vae.auto_encoder import *
+from util import setup_logging_from_args
+from auto_encoder import *
 
 models = {
-    'custom': {'vqvae': VQ_CVAE,
-               'vqvae2': VQ_CVAE2},
-    'imagenet': {'vqvae': VQ_CVAE,
-                 'vqvae2': VQ_CVAE2},
+    'custom': {'vqvae': VQ_CVAE},
+    'imagenet': {'vqvae': VQ_CVAE},
     'cifar10': {'vae': CVAE,
-                'vqvae': VQ_CVAE,
-                'vqvae2': VQ_CVAE2},
+                'vqvae': VQ_CVAE},
     'mnist': {'vae': VAE,
               'vqvae': VQ_CVAE},
 }
@@ -96,7 +93,7 @@ def main(args):
                                  help='dataset to use: mnist | cifar10 | imagenet | custom')
     training_parser.add_argument('--dataset_dir_name', default='',
                                  help='name of the dir containing the dataset if dataset == custom')
-    training_parser.add_argument('--data-dir', default='/media/ssd/Datasets',
+    training_parser.add_argument('--data-dir', default='Datasets',
                                  help='directory containing the dataset')
     training_parser.add_argument('--epochs', type=int, default=20, metavar='N',
                                  help='number of epochs to train (default: 10)')

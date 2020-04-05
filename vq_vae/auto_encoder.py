@@ -8,7 +8,7 @@ import torch.utils.data
 from torch import nn
 from torch.nn import functional as F
 
-from .nearest_embed import NearestEmbed, NearestEmbedEMA
+from nearest_embed import NearestEmbed, NearestEmbedEMA
 
 
 class AbstractAutoEncoder(nn.Module):
